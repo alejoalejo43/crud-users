@@ -28,6 +28,17 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
+
+  const deleteUser = (id) => {
+    const URL = `${BASE_URL}users/${id}/`;
+    axios
+      .delete(URL)
+      .then((res) => {
+        console.log(res.data);
+        getAllUsers();
+      })
+      .catch((err) => console.log(err));
+  };
   //Se obtienen todos los usuarios al cargar la aplicacion
   useEffect(() => {
     getAllUsers();
@@ -35,10 +46,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hola mundo</h1>
+      <h1>Crud Users</h1>
       <FormUsers createUser={createUser} />
       {users?.map((user) => (
-        <UseCard key={user.id} user={user} />
+        <UseCard key={user.id} user={user} deleteUser={deleteUser} />
       ))}
     </div>
   );
