@@ -5,12 +5,12 @@ import { useForm } from 'react-hook-form';
 const FormUsers = ({ createUser }) => {
   const { handleSubmit, register } = useForm();
 
-  const submitForm = (data) => {
-    console.log(data);
-  };
+  // const submitForm = (data) => {
+  //   console.log(data);
+  // };
 
   return (
-    <form onSubmit={handleSubmit(submitForm)}>
+    <form onSubmit={handleSubmit(createUser)}>
       <div>
         <label htmlFor="">Email</label>
         <input type="email" {...register('email')} />
