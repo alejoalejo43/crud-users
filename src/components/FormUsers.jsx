@@ -1,6 +1,6 @@
 import { formToJSON } from 'axios';
 import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { appendErrors, useForm } from 'react-hook-form';
 
 const defaultValues = {
   email: '',
@@ -9,9 +9,36 @@ const defaultValues = {
   last_name: '',
   birthday: '',
 };
+const regularExpresion = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
+const validationEmail = {
+  required: 'Email is required !!',
+  minLength: {
+    message: 'Email is too short',
+    value: 3,
+  },
+  maxLength: {
+    message: 'Email is too long',
+    value: 15,
+  },
+  pattern: {
+    message: 'Write a valid email',
+    value: regularExpresion,
+  },
+};
 
-const FormUsers = ({ createUser, userUpdate, updateUser }) => {
-  const { handleSubmit, register, reset } = useForm();
+const FormUsers = ({
+  createUser,
+  userUpdate,
+  updateUser,
+  isShowForm,
+  handleChangeShowModal,
+}) => {
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const submitForm = (data) => {
     if (userUpdate) {
@@ -30,9 +57,9 @@ const FormUsers = ({ createUser, userUpdate, updateUser }) => {
   }, [userUpdate]);
 
   return (
-    <div className="container-form">
+    <div className={`container-form ${isShowForm ? '' : 'diseable-form'}`}>
       <form className="form" onSubmit={handleSubmit(submitForm)}>
-        <i className="form__x bx bx-x"></i>
+        <i onClick={handleChangeShowModal} className="form__x bx bx-x"></i>
         <h2 className="form__title">{titleForm}</h2>
         <div className="form__div">
           <label className="form__label" htmlFor="">
@@ -42,8 +69,9 @@ const FormUsers = ({ createUser, userUpdate, updateUser }) => {
             className="form__input"
             placeholder="Enter yor email"
             type="email"
-            {...register('email')}
+            {...register('email', validationEmail)}
           />
+          {errors.email && <p>{errors.email.message}</p>}
         </div>
         <div className="form__div">
           <label className="form__label" htmlFor="">

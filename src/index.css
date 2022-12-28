@@ -25,6 +25,29 @@ h6 {
   margin: 0;
 }
 
+/* header-container */
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.header__btn {
+  padding: 8px 19px;
+  color: white;
+  background-color: #555a88;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 150ms filter ease-in-out;
+}
+
+.header__btn:hover {
+  filter: brightness(1.2);
+}
+/* .header__title {
+} */
 /* Card Users - Container*/
 
 .users-container {
@@ -41,6 +64,10 @@ h6 {
   width: 100%;
   max-width: 400px;
   border-radius: 10px;
+  transition: 150ms box-shadow ease-in-out;
+}
+.user:hover {
+  box-shadow: 1px 1px 15px #0003;
 }
 .user__title {
   margin-bottom: 20px;
@@ -103,6 +130,10 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container-form.diseable-form {
+  display: none;
 }
 
 /* Form */

@@ -1,7 +1,15 @@
 import React from 'react';
 
-const UseCard = ({ user, deleteUser, setUserUpdate }) => {
-  console.log(user);
+const UseCard = ({
+  user,
+  deleteUser,
+  setUserUpdate,
+  handleChangeShowModal,
+}) => {
+  const handleChangeClickUpdate = () => {
+    setUserUpdate(user);
+    handleChangeShowModal();
+  };
   return (
     <article className="user">
       <h2 className="user__title">{`${user.first_name} ${user.last_name}`}</h2>
@@ -21,7 +29,7 @@ const UseCard = ({ user, deleteUser, setUserUpdate }) => {
           {' '}
           <i className="bx bx-trash"></i>
         </button>
-        <button className="user__btn" onClick={() => setUserUpdate(user)}>
+        <button className="user__btn" onClick={handleChangeClickUpdate}>
           <i className="bx bx-pencil"></i>
         </button>
       </div>
