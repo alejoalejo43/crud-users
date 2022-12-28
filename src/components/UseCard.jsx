@@ -3,18 +3,28 @@ import React from 'react';
 const UseCard = ({ user, deleteUser, setUserUpdate }) => {
   console.log(user);
   return (
-    <article>
-      <h2>{`${user.first_name} ${user.last_name}`}</h2>
-      <ul>
-        <li>
+    <article className="user">
+      <h2 className="user__title">{`${user.first_name} ${user.last_name}`}</h2>
+      <ul className="user__list">
+        <li className="user__item">
           <span>Email</span> {user.email}
         </li>
-        <li>
-          <span>Birthday</span> {user.birthday}
+        <li className="user__item">
+          <span>
+            <i className="bx bxs-gift"></i>Birthday
+          </span>{' '}
+          {user.birthday}
         </li>
       </ul>
-      <i onClick={() => deleteUser(user.id)} className="bx bx-trash"></i>
-      <i onClick={() => setUserUpdate(user)} className="bx bx-pencil"></i>
+      <div className="user__container--btn">
+        <button className="user__btn" onClick={() => deleteUser(user.id)}>
+          {' '}
+          <i className="bx bx-trash"></i>
+        </button>
+        <button className="user__btn" onClick={() => setUserUpdate(user)}>
+          <i className="bx bx-pencil"></i>
+        </button>
+      </div>
     </article>
   );
 };

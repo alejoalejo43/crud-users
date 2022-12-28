@@ -61,19 +61,23 @@ function App() {
   return (
     <div className="App">
       <h1>Crud Users</h1>
+
       <FormUsers
         createUser={createUser}
         userUpdate={userUpdate}
         updateUser={updateUser}
       />
-      {users?.map((user) => (
-        <UseCard
-          key={user.id}
-          user={user}
-          deleteUser={deleteUser}
-          setUserUpdate={setUserUpdate}
-        />
-      ))}
+
+      <div className="users-container">
+        {users?.map((user) => (
+          <UseCard
+            key={user.id}
+            user={user}
+            deleteUser={deleteUser}
+            setUserUpdate={setUserUpdate}
+          />
+        ))}
+      </div>
     </div>
   );
 }

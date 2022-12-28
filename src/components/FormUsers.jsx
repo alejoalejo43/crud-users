@@ -30,30 +30,67 @@ const FormUsers = ({ createUser, userUpdate, updateUser }) => {
   }, [userUpdate]);
 
   return (
-    <form onSubmit={handleSubmit(submitForm)}>
-      <h2>{titleForm}</h2>
-      <div>
-        <label htmlFor="">Email</label>
-        <input type="email" {...register('email')} />
-      </div>
-      <div>
-        <label htmlFor="">Password</label>
-        <input type="password" {...register('password')} />
-      </div>
-      <div>
-        <label htmlFor="">First Name</label>
-        <input type="text" {...register('first_name')} />
-      </div>
-      <div>
-        <label htmlFor="">Last Name</label>
-        <input type="text" {...register('last_name')} />
-      </div>
-      <div>
-        <label htmlFor="">Birthday</label>
-        <input type="date" {...register('birthday')} />
-      </div>
-      <button>{textButton}</button>
-    </form>
+    <div className="container-form">
+      <form className="form" onSubmit={handleSubmit(submitForm)}>
+        <i className="form__x bx bx-x"></i>
+        <h2 className="form__title">{titleForm}</h2>
+        <div className="form__div">
+          <label className="form__label" htmlFor="">
+            Email
+          </label>
+          <input
+            className="form__input"
+            placeholder="Enter yor email"
+            type="email"
+            {...register('email')}
+          />
+        </div>
+        <div className="form__div">
+          <label className="form__label" htmlFor="">
+            Password
+          </label>
+          <input
+            className="form__input"
+            placeholder="Enter your password"
+            type="password"
+            {...register('password')}
+          />
+        </div>
+        <div className="form__div">
+          <label className="form__label" htmlFor="">
+            First Name
+          </label>
+          <input
+            className="form__input"
+            placeholder="Enter your first name"
+            type="text"
+            {...register('first_name')}
+          />
+        </div>
+        <div className="form__div">
+          <label className="form__label" htmlFor="">
+            Last Name
+          </label>
+          <input
+            className="form__input"
+            placeholder="Enter your last name"
+            type="text"
+            {...register('last_name')}
+          />
+        </div>
+        <div className="form__div">
+          <label className="form__label" htmlFor="">
+            Birthday
+          </label>
+          <input
+            className="form__input"
+            type="date"
+            {...register('birthday')}
+          />
+        </div>
+        <button className="form__btn">{textButton}</button>
+      </form>
+    </div>
   );
 };
 

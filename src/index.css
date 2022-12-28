@@ -1,0 +1,165 @@
+/* Reset */
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+input {
+  outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+/* Card Users - Container*/
+
+.users-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+/* Card Users */
+
+.user {
+  border: 1px solid #e5e5e5;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+.user__title {
+  margin-bottom: 20px;
+}
+.user__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user__item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.user__item span {
+  color: #a3a0a0;
+  text-transform: uppercase;
+}
+.user__item span i {
+  color: #000;
+  margin-right: 4px;
+}
+
+.user__container--btn {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.user__btn {
+  border: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: 50ms transform ease-in-out;
+}
+.user__btn:hover {
+  transform: scale(1.1);
+}
+.user__btn:first-child {
+  background-color: #d85d5d;
+  color: white;
+}
+.user__btn:last-child {
+  color: #aaaaaa;
+}
+
+/* Modal */
+.container-form {
+  position: fixed;
+  background-color: #0003;
+  backdrop-filter: blur(2px);
+  z-index: 2;
+  top: 0;
+  min-height: 100vh;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form */
+.form {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+}
+.form__x {
+  position: absolute;
+  color: #d85d5d;
+  font-size: 30px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  transition: 100ms transform ease-in-out;
+}
+
+.form__x:hover {
+  transform: scale(1.3);
+}
+.form__title {
+  font-size: 24px;
+}
+.form__div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.form__label {
+  font-size: 14px;
+}
+.form__input {
+  font-family: inherit;
+  padding: 8px 10px;
+  background-color: #f9fafc;
+  border: 1px solid 4px;
+  border-radius: 4px;
+}
+
+.form__btn {
+  width: 100%;
+  padding: 8px 12px;
+  color: white;
+  background-color: #555a88;
+  border: none;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 200ms filter ease-in-out;
+}
+
+.form__btn:hover {
+  filter: brightness(1.2);
+}
