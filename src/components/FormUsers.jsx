@@ -1,16 +1,37 @@
 import { formToJSON } from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-const FormUsers = ({ createUser }) => {
-  const { handleSubmit, register } = useForm();
+const defaultValues = {
+  email: '',
+  password: '',
+  first_name: '',
+  last_name: '',
+  birthday: '',
+};
+
+const FormUsers = ({ createUser, userUpdate, updateUser }) => {
+  const { handleSubmit, register, reset } = useForm();
 
   const submitForm = (data) => {
-    createUser(data);
+    if (userUpdate) {
+      updateUser(userUpdate.id, data);
+    } else {
+      createUser(data);
+    }
+    reset(defaultValues);
   };
+  const titleForm = userUpdate ? 'Edit User' : 'New User';
+  const textButton = userUpdate ? 'Edit User' : 'Add New User';
+  useEffect(() => {
+    if (userUpdate) {
+      reset(userUpdate);
+    }
+  }, [userUpdate]);
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
+      <h2>{titleForm}</h2>
       <div>
         <label htmlFor="">Email</label>
         <input type="email" {...register('email')} />
@@ -31,7 +52,7 @@ const FormUsers = ({ createUser }) => {
         <label htmlFor="">Birthday</label>
         <input type="date" {...register('birthday')} />
       </div>
-      <button>Add User</button>
+      <button>{textButton}</button>
     </form>
   );
 };

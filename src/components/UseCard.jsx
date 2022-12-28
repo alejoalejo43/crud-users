@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UseCard = ({ user, deleteUser }) => {
+const UseCard = ({ user, deleteUser, setUserUpdate }) => {
   console.log(user);
   return (
     <article>
@@ -14,7 +14,7 @@ const UseCard = ({ user, deleteUser }) => {
         </li>
       </ul>
       <i onClick={() => deleteUser(user.id)} className="bx bx-trash"></i>
-      <i className="bx bx-pencil"></i>
+      <i onClick={() => setUserUpdate(user)} className="bx bx-pencil"></i>
     </article>
   );
 };

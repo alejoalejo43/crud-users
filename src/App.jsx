@@ -8,6 +8,7 @@ const BASE_URL = 'https://users-crud.academlo.tech/';
 function App() {
   //Estado para almacenar los usuarios y  mostrarlos
   const [users, setUsers] = useState();
+  const [userUpdate, setUserUpdate] = useState();
   //Funcion para obtener todos los usuarios
   const getAllUsers = () => {
     const URL = `${BASE_URL}users/`;
@@ -39,6 +40,19 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
+
+  const updateUser = (id, data) => {
+    const URL = `${BASE_URL}users/${id}/`;
+    axios
+      .patch(URL, data)
+      .then((res) => {
+        console.log(res.data);
+        getAllUsers();
+        setUserUpdate();
+      })
+      .catch((err) => console.log(err));
+  };
+
   //Se obtienen todos los usuarios al cargar la aplicacion
   useEffect(() => {
     getAllUsers();
@@ -47,9 +61,18 @@ function App() {
   return (
     <div className="App">
       <h1>Crud Users</h1>
-      <FormUsers createUser={createUser} />
+      <FormUsers
+        createUser={createUser}
+        userUpdate={userUpdate}
+        updateUser={updateUser}
+      />
       {users?.map((user) => (
-        <UseCard key={user.id} user={user} deleteUser={deleteUser} />
+        <UseCard
+          key={user.id}
+          user={user}
+          deleteUser={deleteUser}
+          setUserUpdate={setUserUpdate}
+        />
       ))}
     </div>
   );
